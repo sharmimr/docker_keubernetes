@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-order-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web-order
+  template:
+    metadata:
+      labels:
+        app: web-order
+    spec:
+      containers:
+      - name: web-order-container
+        image: web-order-service
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
